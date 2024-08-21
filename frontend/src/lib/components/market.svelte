@@ -64,7 +64,7 @@
 
 <div class="mb-4 flex justify-between">
 	<div class="mb-4">
-		<h1 class="text-2xl font-bold">{market.name}</h1>
+		<h1 class="text-2xl font-bold">{market.name} {midPrice}</h1>
 		<p class="mt-2 text-xl">{market.description}</p>
 		<p class="mt-2 text-sm italic">
 			Created by {market.ownerId ? $users?.get(market.ownerId)?.name : ''}
@@ -141,6 +141,8 @@
 						<Table.Head class="text-center">Last price</Table.Head>
 						<Table.Head class="text-center">Mid price</Table.Head>
 						<Table.Head class="text-center">Your Position</Table.Head>
+						<Table.Head class="text-center">Market Value</Table.Head>
+						<Table.Head class="text-center">Max Loss</Table.Head>
 					</Table.Row>
 				</Table.Header>
 				<Table.Body class="text-center">
@@ -148,6 +150,8 @@
 						<Table.Cell class="pt-2">{lastPrice}</Table.Cell>
 						<Table.Cell class="pt-2">{midPrice}</Table.Cell>
 						<Table.Cell class="pt-2">{Number(position.toFixed(4))}</Table.Cell>
+						<Table.Cell class="pt-2">{Number(lastPrice) * Number(position)}</Table.Cell>
+						<Table.Cell class="pt-2">{Number(lastPrice) * Number(position)}</Table.Cell>
 					</Table.Row>
 				</Table.Body>
 			</Table.Root>

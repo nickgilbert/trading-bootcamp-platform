@@ -99,6 +99,11 @@
 		</Form.Control>
 		<Form.FieldErrors />
 	</Form.Field>
+	<div>
+		Exposure: {$formData.side === 'BID'
+			? Number($formData.size) * Number($formData.price)
+			: Number($formData.size) * Number(maxSettlement)}
+	</div>
 	<Form.Button class="w-full {$formData.side === 'BID' ? 'bg-green-500' : 'bg-red-500'}"
 		>Place {$formData.side}</Form.Button
 	>
