@@ -150,8 +150,12 @@
 						<Table.Cell class="pt-2">{lastPrice}</Table.Cell>
 						<Table.Cell class="pt-2">{midPrice}</Table.Cell>
 						<Table.Cell class="pt-2">{Number(position.toFixed(4))}</Table.Cell>
-						<Table.Cell class="pt-2">{Number(lastPrice) * Number(position)}</Table.Cell>
-						<Table.Cell class="pt-2">{Number(lastPrice) * Number(position)}</Table.Cell>
+						<Table.Cell class="pt-2">{Number(midPrice) * Number(position)}</Table.Cell>
+						<Table.Cell class="pt-2"
+							>{Number(position) > 0
+								? -Number(position) * Number(midPrice)
+								: Number(position) * (Number(market.maxSettlement) - Number(midPrice))}</Table.Cell
+						>
 					</Table.Row>
 				</Table.Body>
 			</Table.Root>
@@ -171,6 +175,7 @@
 							<Table.Head class="text-center">Seller</Table.Head>
 							<Table.Head class="text-center">Price</Table.Head>
 							<Table.Head class="text-center">Size</Table.Head>
+							<Table.Head class="text-center">Value</Table.Head>
 						</Table.Row>
 					</Table.Header>
 					<Table.Body>
@@ -187,6 +192,9 @@
 								</Table.Cell>
 								<Table.Cell class="px-1 py-0">
 									<FlexNumber value={trade.size || ''} />
+								</Table.Cell>
+								<Table.Cell class="px-1 py-0">
+									<FlexNumber value={(Number(trade.size) * Number(trade.price)).toFixed(2) || ''} />
 								</Table.Cell>
 							</Table.Row>
 						{/each}

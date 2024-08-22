@@ -102,7 +102,7 @@
 	<div>
 		Exposure: {$formData.side === 'BID'
 			? Number($formData.size) * Number($formData.price)
-			: Number($formData.size) * Number(maxSettlement)}
+			: Number($formData.size) * (Number(maxSettlement) - Number($formData.price))}
 	</div>
 	<Form.Button class="w-full {$formData.side === 'BID' ? 'bg-green-500' : 'bg-red-500'}"
 		>Place {$formData.side}</Form.Button
